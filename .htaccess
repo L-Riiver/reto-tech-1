@@ -1,0 +1,43 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+<IfModule mod_deflate.c>
+    # Comprimir textos, HTML, CSS, JavaScript, JSON, XML
+    AddOutputFilterByType DEFLATE text/plain text/html text/css application/javascript application/json application/xml application/xml+rss
+    # Comprimir fuentes de texto como TTF y WOFF
+    AddOutputFilterByType DEFLATE application/x-font-ttf application/x-font-woff application/font-woff
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Definir tiempo de expiración para diferentes tipos de archivos
+    ExpiresByType text/html "access plus 1 hour"
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+<FilesMatch "\.(htaccess|htpasswd|ini|log)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    # Protege contra XSS
+    Header set X-XSS-Protection "1; mode=block"
+    # Protección contra clickjacking
+    Header always append X-Frame-Options SAMEORIGIN
+    # Protección contra ataques de MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    # Habilitar CORS para recursos de otras fuentes
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
