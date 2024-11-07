@@ -1,0 +1,197 @@
+body{
+  letter-spacing: 0.02rem;
+}
+
+/* ================ HOME ================ */
+.home.details{
+  padding-top: 2.6rem;
+}
+
+/* ================ PRODUCT INFO ================ */
+.product__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  background: #fff;
+  padding-block: 2rem 1rem;
+}
+
+/* IMG */
+.product__container-images {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  gap: 5px;
+}
+
+.container__main-img {
+  max-width: 400px;
+  margin: auto;
+}
+
+.thumbnails {
+  display: flex;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.thumbnails .active{
+  border: 2px solid red;
+}
+
+.thumbnails img {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+/* INFO */
+.product__container-info {
+  margin: 20px auto 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: var(--black-color);
+  padding: 5px 10px;
+  max-width: 500px;
+  gap: 9px;
+}
+.product__container-info h2{
+  color: var(--black-color);
+}
+#info__product-name{
+  color: var(--first-color);
+}
+
+#info__product-description {
+  max-height: 120px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  transition: height 0.4s ease; 
+  text-align: start;
+}
+#view_more-btn{
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#productPrice {
+  font-size: var(--h1-font-size);
+  color: var(--black-color);
+  font-weight: var(--font-semi-bold);
+}
+#productListPrice {
+  font-size: var(--h2-font-size);
+  color: var(--text-color-light);
+  text-decoration:line-through;
+  background-color: transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-weight: var(--font-regular);
+}
+.price__symbol{
+  font-size: var(--h3-font-size);
+}
+.price__symbol.list{
+  color: var(--text-color-light);
+}
+
+
+
+/*=============== TECHNICAL SPEC ===============*/
+.product__tech{
+  flex-direction: column;
+  gap: 5px;
+  padding:5px 20px;
+  font-size: var(--small-font-size);
+  overflow-x: auto;
+  align-items: center;
+}
+
+.product__tech table {
+  min-width: 415px;
+  max-width: 900px;
+}
+
+.product__tech h2{
+  color: var(--first-color);
+}
+
+.product__tech tr{
+  height: 25px;
+  color: var(--container-color);
+}
+
+.product__tech tr th,
+.product__tech tr td{
+  text-align: start;
+  border-bottom: 1px solid var(--text-color-light);
+}
+/* PDF BUTTON */
+.button__pdf{
+  padding: 5px 9px;
+  border-radius: 5px;
+  margin: 3px;
+}
+
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  #mainImage{
+    width: 250px;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width:768px) {
+  
+  .product__container-images{
+    flex-direction: row;
+    width: auto;
+    justify-content: space-evenly;
+  }
+  .product__container-info{
+    max-height: 80vh;
+    overflow: auto;
+  }
+  .container__main-img{
+    display: flex;
+    width: 70%;
+    margin: 0;
+  }
+  .thumbnails{
+    order: -1;
+    width: auto;
+    flex-direction: column;
+  }
+  
+  .product__container {
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem 2rem;
+    align-items: start;
+  }
+  .product__tech{
+    display: flex;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+  .product__container {
+    padding: 1rem 10rem;
+  }
+  .thumbnails {
+    flex-direction: column;
+  }
+}
+

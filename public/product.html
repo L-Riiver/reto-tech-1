@@ -21,25 +21,21 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="css/styles.css">
-
+    <link rel="stylesheet" href="css/product.css">
     
-    <title>Buscar Productos - SKU</title>
+    <title>Detalles Producto</title>
     
   </head>
   <body>
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
       <nav class="nav container">
-        <a href="#" class="nav__logo">
+        <a href="./index.html" class="nav__logo">
           <i class="ri-home-9-line"></i> PROMART</a>
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#home" class="nav__link active-link">Inicio</a>
-            </li>
-
-            <li class="nav__item">
-              <a href="#search" class="nav__link">Buscador</a>
+              <a href="./index.html" class="nav__link active-link">Inicio</a>
             </li>
 
           </ul>
@@ -58,41 +54,37 @@
     </header>
 
     <main class="main">
-      <!--==================== HOME ====================-->
-      <section class="home section" id="home">
+      <!--==================== TOP HEADER ====================-->
+      <section class="home section details" id="home">
         <img src="img/home-bg.jpeg" alt="image" class="home__bg">
         <div class="home__shadow"></div>
-        <div class="home__container container grid">
-          <div class="home__data">
-            <h1 class="home__title">
-              Buscador de <br> productos por SKU
-            </h1>
-
-            <a href="#search" class="button" onclick="document.querySelector('#search__input').focus()">Probar!</a>
-            
-          </div>
-
         </div>
       </section>
-
-      <!--==================== SEARCH ====================-->
-      <section class="search section" id="search">
-        <div class="search__container container">
-          <h2 class="search__title">
-            Buscador de productos:
-          </h2>
-
-          <form class="search__form">
-            <input type="text" placeholder="SKU del producto" class="search__input" id="search__input">
-            <button type="submit" class="button search__btn">Buscar</button>
-          </form>
-
-          <div class="search__results" id="search-results">
-            <p>Aquí se mostrarán los productos relacionados.</p>
-          </div>
-
+      <!--==================== MAIN INFO ====================-->
+      <section class="product__container">
+        <div class="product__container-images">
+          <img id="mainImage" src="" alt="Producto" class="container__main-img">
+          <div id="thumbnails" class="thumbnails"></div>
+        </div>
+        <div class="product__container-info">
+          <h1 id="info__product-name"></h1>
+          <h2><strong  id="info__product-brand"></strong> | SKU: <strong  id="info__product-sku"></strong></h2>
+          <p>
+            <span id="info__product-description"></span>
+            <span id="view_more-btn" onclick="fullText()">Ver más...</span></p>
+          <p><strong>Precio online:</strong> <span class="price__symbol">S/.</span> <span id="productPrice"></span></p>
+          <p><strong>Precio lista:</strong> <span class="price__symbol list">S/.</span> <span id="productListPrice"></span></p>
+          <p><strong>Categorías:</strong> <span id="productCategory"></span></p>
         </div>
       </section>
+      <!--==================== PRODUCT TECH ====================-->
+      <section class="product__tech">
+        <h2 >Ficha Técnica</h2>
+        <table>
+          <tbody id="info__product-tech"></tbody>
+        </table>
+      </section>
+      
     </main>
     
     <!--==================== FOOTER ====================-->
@@ -103,6 +95,8 @@
     </footer>
     <!--=============== MAIN JS ===============-->
     <script src="js/main.js"></script>
+    <!--=============== PRODUCT JS ===============-->
+    <script src="js/product.js"></script>
     <!--=============== FIREBASE JS ===============-->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
