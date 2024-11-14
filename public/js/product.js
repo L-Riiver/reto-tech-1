@@ -2,10 +2,16 @@
 /*=============== API PRODUCT ===============*/
 async function fetchProductData() {
   const sku = new URLSearchParams(window.location.search).get('sku');
-  const url = `https://www.promart.pe/api/catalog_system/pub/products/search/?isAvailablePerSalesChannel_2:1&sc=2&fq=skuId:${sku}`;
+  const url = `https://proxy.cors.sh/https://www.promart.pe/api/catalog_system/pub/products/search/?isAvailablePerSalesChannel_2:1&sc=2&fq=skuId:${sku}`;
+
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      method: 'GET', 
+      headers: {
+        'x-cors-api-key': 'temp_3fd27284b3977180e2b9d6d104a438e4',
+      }
+    });
     if (!response.ok) throw new Error('Producto no encontrado');
     
     const data = await response.json();

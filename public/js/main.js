@@ -69,10 +69,15 @@ document
     resultsContainer.innerHTML = "";
 
     if (sku) {
-      const apiUrl = `https://www.promart.pe/api/catalog_system/pub/products/search/?sc=2&ft=${sku}`;
+      const apiUrl = `https://proxy.cors.sh/https://www.promart.pe/api/catalog_system/pub/products/search/?sc=2&ft=${sku}`;
 
       try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl, {
+          method: 'GET', 
+          headers: {
+            'x-cors-api-key': 'temp_3fd27284b3977180e2b9d6d104a438e4',
+          }
+        });
         const data = await response.json();
 
         if (data.length === 0) {
